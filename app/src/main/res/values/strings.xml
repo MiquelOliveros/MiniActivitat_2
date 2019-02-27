@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">My Application 2</string>
     <string name="intro1">Introduce the bye message</string>
-    <string name="hello">Hello World!\nBye Message</string>
+    <string name="hello">Hello World!\n\nBye Message</string>
     <string name="nrep">Number of Repetitions</string>
     <string name="byeBut">GO TO BYE SCREEN</string>
+    <string name="helpbye">Introduce your bye message</string>
+    <string name="numintr">here</string>
 </resources>
