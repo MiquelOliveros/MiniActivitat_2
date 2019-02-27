@@ -5,5 +5,5 @@
     <string name="nrep">Number of Repetitions</string>
     <string name="byeBut">GO TO BYE SCREEN</string>
     <string name="helpbye">Introduce your bye message</string>
-    <string name="numintr">here</string>
+    <string name="numintr"></string>
 </resources>
