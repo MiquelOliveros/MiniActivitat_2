@@ -13,13 +13,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        controler();
+    }
+
+    private void controler() {
         Button button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
-                startActivity(intent);
-            }
-        });
+        button.setOnClickListener(new Catcher());
+    }
+
+    private class Catcher implements View.OnClickListener {
+        EditText editText1;
+        EditText editText2;
+
+        public Catcher() {
+            editText1 = findViewById(R.id.byeMess);
+            editText2 = findViewById(R.id.nRep);
+        }
+
+        @Override
+        public void onClick(View v) {
+            String message = editText1.getText().toString();
+            String reps = editText2.getText().toString();
+            int nReps = Integer.parseInt(reps);
+
+            Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
+            intent.putExtra("ByeMess", message);
+            intent.putExtra("NumReps", nReps);
+            startActivity(intent);
+        }
     }
 }
