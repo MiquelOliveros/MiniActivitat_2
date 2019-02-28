@@ -6,7 +6,11 @@
     <string name="nrep">Number of Repetitions</string>
     <string name="byeBut">GO TO BYE SCREEN</string>
     <string name="helpbye">Introduce your bye message</string>
-    <string name="numintr"></string>
+    <string name="white"></string>
     <string name="backBut">GO BACK</string>
-    <string name="bye"></string>
+    <string name="mss">ByeMess</string>
+    <string name="rep">NumReps</string>
+    <string name="defaultBye">Bye!</string>
+    <string name="defaultRep">1</string>
+    <string name="messageKey">mess</string>
 </resources>

@@ -18,8 +18,8 @@ public class SecondActivity extends AppCompatActivity {
 
     private String readParameters() {
         Bundle data = this.getIntent().getExtras();
-        int numRep = data.getInt("NumReps");
-        String message = data.getString("ByeMess");
+        int numRep = data.getInt(getString(R.string.rep));
+        String message = data.getString(getString(R.string.mss));
 
         String concatMess = message;
         for (int i = 1; i < numRep; i++) {
@@ -47,7 +47,7 @@ public class SecondActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            intent.putExtra("Mess", this.message);
+            intent.putExtra(getString(R.string.messageKey), this.message);
             startActivity(intent);
         }
     }

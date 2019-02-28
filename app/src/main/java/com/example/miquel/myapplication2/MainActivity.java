@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +19,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void readParameters() {
-
+        try {
+            Bundle data = this.getIntent().getExtras();
+            String message = data.getString(getString(R.string.messageKey));
+            TextView text = findViewById(R.id.helloMessage);
+            text.setText(message);
+        } catch (Exception e){}
     }
 
     private void controler() {
@@ -38,12 +44,16 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             String message = this.editText1.getText().toString();
+            if (message.isEmpty()) message = getString(R.string.defaultBye);
+
             String reps = this.editText2.getText().toString();
+            if (reps.isEmpty()) reps = getString(R.string.defaultRep);
             int nReps = Integer.parseInt(reps);
+            if (nReps > 50000) nReps = 10000;   //per evitar aturades en l'aplicació
 
             Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
-            intent.putExtra("ByeMess", message);
-            intent.putExtra("NumReps", nReps);
+            intent.putExtra(getString(R.string.mss), message);
+            intent.putExtra(getString(R.string.rep), nReps);
             startActivity(intent);
         }
     }
