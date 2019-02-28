@@ -6,7 +6,7 @@ Second MiniActivity of android
 * [Arnau Nadal](https://github.com/ar98nau)
 
 ### Enunciate ###
-* [CV link](https://cv.udl.cat/access/content/attachment/102025-1819/Activitats/9915843c-6ed1-40c1-85c5-f76aa25ecc11/MiniActv-1.pdf)
+* [CV link](https://cv.udl.cat/access/content/attachment/102025-1819/Activitats/508f6b1c-3fa4-4021-bd15-755be80f098c/MiniActv-2.pdf)
 
 ### Limit Date ###
 5/03/19

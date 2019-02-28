@@ -33,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
         this.editText1 = findViewById(R.id.byeMess);
         this.editText1.setHint(R.string.helpbye);
         this.editText1.requestFocus();
+        this.editText1.getText().clear();
         this.editText2 = findViewById(R.id.nRep);
+        this.editText2.getText().clear();
         Button button = findViewById(R.id.button);
         button.setOnClickListener(new Catcher(this.editText1, this.editText2));
     }
