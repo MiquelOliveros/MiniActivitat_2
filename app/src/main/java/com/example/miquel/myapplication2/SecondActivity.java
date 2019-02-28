@@ -12,11 +12,11 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.secundary_activity);
-        readParameters();
-        controler();
+        String message = readParameters();
+        controler(message);
     }
 
-    private void readParameters() {
+    private String readParameters() {
         Bundle data = this.getIntent().getExtras();
         int numRep = data.getInt("NumReps");
         String message = data.getString("ByeMess");
@@ -28,16 +28,27 @@ public class SecondActivity extends AppCompatActivity {
 
         TextView byeText = findViewById(R.id.textViewBye);
         byeText.setText(concatMess);
+
+        return concatMess;
     }
 
-    private void controler() {
+    private void controler(String mess) {
         Button button = findViewById(R.id.button2);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        button.setOnClickListener(new Changer(mess));
+    }
+
+    private class Changer implements View.OnClickListener {
+        String message;
+
+        public Changer(String message) {
+            this.message = message;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.putExtra("Mess", this.message);
+            startActivity(intent);
+        }
     }
 }

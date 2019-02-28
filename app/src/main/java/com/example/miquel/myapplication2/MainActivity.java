@@ -13,7 +13,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        readParameters();
         controler();
+    }
+
+    private void readParameters() {
+
     }
 
     private void controler() {
@@ -26,14 +31,14 @@ public class MainActivity extends AppCompatActivity {
         EditText editText2;
 
         public Catcher() {
-            editText1 = findViewById(R.id.byeMess);
-            editText2 = findViewById(R.id.nRep);
+            this.editText1 = findViewById(R.id.byeMess);
+            this.editText2 = findViewById(R.id.nRep);
         }
 
         @Override
         public void onClick(View v) {
-            String message = editText1.getText().toString();
-            String reps = editText2.getText().toString();
+            String message = this.editText1.getText().toString();
+            String reps = this.editText2.getText().toString();
             int nReps = Integer.parseInt(reps);
 
             Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
