@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    EditText editText1;
+    EditText editText2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,25 +30,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void controler() {
+        this.editText1 = findViewById(R.id.byeMess);
+        this.editText1.setHint(R.string.helpbye);
+        this.editText1.requestFocus();
+        this.editText2 = findViewById(R.id.nRep);
         Button button = findViewById(R.id.button);
-        button.setOnClickListener(new Catcher());
+        button.setOnClickListener(new Catcher(this.editText1, this.editText2));
     }
 
     private class Catcher implements View.OnClickListener {
-        EditText editText1;
-        EditText editText2;
+        EditText et1;
+        EditText et2;
 
-        public Catcher() {
-            this.editText1 = findViewById(R.id.byeMess);
-            this.editText2 = findViewById(R.id.nRep);
+        public Catcher(EditText et1, EditText et2) {
+            this.et1 = et1;
+            this.et2 = et2;
         }
 
         @Override
         public void onClick(View v) {
-            String message = this.editText1.getText().toString();
+            String message = this.et1.getText().toString();
             if (message.isEmpty()) message = getString(R.string.defaultBye);
 
-            String reps = this.editText2.getText().toString();
+            String reps = this.et2.getText().toString();
             if (reps.isEmpty()) reps = getString(R.string.defaultRep);
             int nReps = Integer.parseInt(reps);
             if (nReps > 50000) nReps = 10000;   //per evitar aturades en l'aplicació

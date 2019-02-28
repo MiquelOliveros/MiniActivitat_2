@@ -35,6 +35,7 @@ public class SecondActivity extends AppCompatActivity {
     private void controler(String mess) {
         Button button = findViewById(R.id.button2);
         button.setOnClickListener(new Changer(mess));
+        button.requestFocus();
     }
 
     private class Changer implements View.OnClickListener {
