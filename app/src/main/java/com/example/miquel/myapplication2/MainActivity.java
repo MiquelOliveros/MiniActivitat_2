@@ -1,6 +1,7 @@
 package com.example.miquel.myapplication2;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,26 +17,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        readParameters();
         controler();
     }
 
-    private void readParameters() {
-        try {
-            Bundle data = this.getIntent().getExtras();
-            String message = data.getString(getString(R.string.messageKey));
-            TextView text = findViewById(R.id.helloMessage);
-            text.setText(message);
-        } catch (Exception e){}
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        editText1.getText().clear();
+        this.editText1.setHint(R.string.helpbye);
+        this.editText1.requestFocus();
+        editText2.getText().clear();
+        Bundle passedData = data.getExtras();
+        String message = passedData.getString(getString(R.string.messageKey));
+        TextView text = findViewById(R.id.helloMessage);
+        text.setText(message);
     }
 
     private void controler() {
         this.editText1 = findViewById(R.id.byeMess);
         this.editText1.setHint(R.string.helpbye);
         this.editText1.requestFocus();
-        this.editText1.getText().clear();
         this.editText2 = findViewById(R.id.nRep);
-        this.editText2.getText().clear();
         Button button = findViewById(R.id.button);
         button.setOnClickListener(new Catcher(this.editText1, this.editText2));
     }
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
             intent.putExtra(getString(R.string.mss), message);
             intent.putExtra(getString(R.string.rep), nReps);
-            startActivity(intent);
+            startActivityForResult(intent, 1);
         }
     }
 }

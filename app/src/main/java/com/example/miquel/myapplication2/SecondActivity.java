@@ -47,9 +47,10 @@ public class SecondActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent();
             intent.putExtra(getString(R.string.messageKey), this.message);
-            startActivity(intent);
+            setResult(RESULT_OK, intent);
+            finish();
         }
     }
 }
