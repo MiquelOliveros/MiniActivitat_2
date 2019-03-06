@@ -21,15 +21,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        editText1.getText().clear();
-        this.editText1.setHint(R.string.helpbye);
-        this.editText1.requestFocus();
-        editText2.getText().clear();
-        Bundle passedData = data.getExtras();
-        String message = passedData.getString(getString(R.string.messageKey));
-        TextView text = findViewById(R.id.helloMessage);
-        text.setText(message);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(requestCode == 1){
+            if(resultCode == RESULT_OK){
+                editText1.getText().clear();
+                this.editText1.setHint(R.string.helpbye);
+                this.editText1.requestFocus();
+                editText2.getText().clear();
+                Bundle passedData = data.getExtras();
+                String message = passedData.getString(getString(R.string.messageKey));
+                TextView text = findViewById(R.id.helloMessage);
+                text.setText(message);
+            }
+        }
     }
 
     private void controler() {
